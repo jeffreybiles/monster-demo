@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 20151005084932) do
 
   create_table "users", force: true do |t|
     t.string   "name"
-    t.integer  "email"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
