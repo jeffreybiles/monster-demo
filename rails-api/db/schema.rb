@@ -11,12 +11,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151004091846) do
+ActiveRecord::Schema.define(version: 20151005084932) do
 
   create_table "monsters", force: true do |t|
     t.string   "name"
     t.integer  "level"
     t.string   "image_url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "team_memberships", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "monster_id"
+  end
+
+  add_index "team_memberships", ["monster_id"], name: "index_team_memberships_on_monster_id"
+  add_index "team_memberships", ["user_id"], name: "index_team_memberships_on_user_id"
+
+  create_table "users", force: true do |t|
+    t.string   "name"
+    t.integer  "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
