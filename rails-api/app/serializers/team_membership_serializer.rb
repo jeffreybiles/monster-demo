@@ -1,4 +1,3 @@
 class TeamMembershipSerializer < ActiveModel::Serializer
-  has_one :user
-  has_one :monster
+  attributes :id, :user_id, :monster_id
 end

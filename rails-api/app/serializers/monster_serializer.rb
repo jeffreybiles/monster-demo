@@ -1,5 +1,5 @@
 class MonsterSerializer < ActiveModel::Serializer
-  attributes :name, :level, :image_url
+  attributes :id, :name, :level, :image_url
 
-  has_many :team_memberships
+  has_many :team_memberships, embed: :ids, include: true
 end
