@@ -30,6 +30,11 @@ class ApplicationController < ActionController::Base
     head 204
   end
 
+  def current_user
+    token = request.headers['X-CSRF-Token']
+    user = User.find_by(authentication_token: token)
+  end
+
   private
 
   def resource_class
@@ -44,8 +49,8 @@ class ApplicationController < ActionController::Base
     @resource ||= resource_class.send(:find, params[:id])
   end
 
-  def authorize_admin
-    unless current_user && current_user.admin
+  def authorize_user
+    unless current_user
       head 401
     end
   end
