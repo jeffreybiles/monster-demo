@@ -4,7 +4,9 @@ class User < ActiveRecord::Base
 
   has_many :team_memberships
   has_many :monsters, through: :team_memberships
-
+  validates_presence_of :email
+  validates_presence_of :password
+  validates_uniqueness_of :email
 
   private
     def set_auth_token
